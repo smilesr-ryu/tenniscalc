@@ -8,72 +8,100 @@ st.set_page_config(page_title="Tennis Calculator", page_icon="🎾", layout="cen
 st.markdown(
     """
     <style>
+    /* Australian Open Theme - Dark Blue & Orange */
+    body, .stApp {
+        background: linear-gradient(135deg, #003DA5 0%, #0052cc 50%, #003580 100%);
+    }
+    
     .block-container {
         max-width: 420px;
         padding-top: 1.2rem;
         padding-bottom: 1rem;
+        background: linear-gradient(135deg, #003DA5 0%, #0052cc 50%, #003580 100%);
     }
+    
     .calc-wrap {
-        background: #0e1117;
+        background: linear-gradient(145deg, #001a4d 0%, #002d66 100%);
         border-radius: 18px;
         padding: 14px;
-        border: 1px solid rgba(255,255,255,0.08);
+        border: 2px solid #FF9D00;
+        box-shadow: 0 8px 32px rgba(255, 157, 0, 0.3);
     }
+    
     .display-box {
-        background: #151a24;
+        background: linear-gradient(135deg, #001a4d 0%, #002d66 100%);
         border-radius: 14px;
         min-height: 90px;
         padding: 14px;
-        border: 1px solid rgba(255,255,255,0.06);
+        border: 2px solid rgba(255, 157, 0, 0.5);
         display: flex;
         align-items: end;
         justify-content: end;
         font-size: 2.2rem;
         font-weight: 700;
-        color: #f5f7fb;
+        color: #FFD700;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.4);
     }
+    
     .menu-note {
         text-align: right;
-        color: #a3acb9;
+        color: #FFD700;
         font-size: 0.8rem;
         margin-bottom: 6px;
     }
+    
     .stButton > button {
         width: 100%;
         height: 58px;
         border-radius: 12px;
-        border: 1px solid rgba(255,255,255,0.09);
-        background: #1b2130;
+        border: 2px solid #FF9D00;
+        background: linear-gradient(135deg, #0052cc 0%, #003DA5 100%);
         color: #ffffff !important;
         font-size: 1.15rem;
         font-weight: 600;
         transition: all 0.2s ease;
+        box-shadow: 0 4px 12px rgba(255, 157, 0, 0.2);
     }
+    
     .stButton > button:hover {
-        background: #ffffff;
-        color: #1b2130 !important;
-        border-color: rgba(255,255,255,0.5);
+        background: linear-gradient(135deg, #FF9D00 0%, #FFB84D 100%);
+        color: #001a4d !important;
+        border-color: #FFB84D;
+        box-shadow: 0 6px 20px rgba(255, 157, 0, 0.5);
+        transform: translateY(-2px);
     }
+    
     .stButton > button:hover span, 
     .stButton > button:hover div,
     .stButton > button:hover p {
-        color: #1b2130 !important;
+        color: #001a4d !important;
     }
+    
     button {
         color: #ffffff !important;
     }
+    
     button * {
         color: #ffffff !important;
     }
+    
     .stButton > button span, 
     .stButton > button div,
     .stButton > button p,
     .stButton > button label {
         color: #ffffff !important;
     }
+    
+    .stButton > button:hover span,
+    .stButton > button:hover div,
+    .stButton > button:hover p,
+    .stButton > button:hover label {
+        color: #001a4d !important;
+    }
+    
     /* Streamlit button text color */
     .stButton [data-testid="baseButton-secondary"] {
         color: #ffffff !important;
