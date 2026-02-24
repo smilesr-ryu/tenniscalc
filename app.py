@@ -50,9 +50,17 @@ st.markdown(
         color: #ffffff !important;
         font-size: 1.15rem;
         font-weight: 600;
+        transition: all 0.2s ease;
     }
     .stButton > button:hover {
-        border-color: rgba(255,255,255,0.22);
+        background: #ffffff;
+        color: #1b2130 !important;
+        border-color: rgba(255,255,255,0.5);
+    }
+    .stButton > button:hover span, 
+    .stButton > button:hover div,
+    .stButton > button:hover p {
+        color: #1b2130 !important;
     }
     button {
         color: #ffffff !important;
