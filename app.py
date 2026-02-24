@@ -53,6 +53,28 @@ st.markdown(
         margin-bottom: 6px;
     }
     
+    .australian-open-logo {
+        text-align: center;
+        font-size: 4rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, #FF9D00 0%, #FFD700 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 16px;
+        letter-spacing: 3px;
+        filter: drop-shadow(0 3px 10px rgba(255, 157, 0, 0.6));
+    }
+    
+    .australian-open-text {
+        text-align: center;
+        font-size: 0.9rem;
+        color: #FFD700;
+        font-weight: 600;
+        margin-bottom: 8px;
+        letter-spacing: 2px;
+    }
+    
     .stButton > button {
         width: 100%;
         height: 58px;
@@ -244,6 +266,7 @@ def call_lotto_api() -> None:
 
 
 st.markdown('<div class="calc-wrap">', unsafe_allow_html=True)
+st.markdown('<div class="australian-open-logo">ΛO</div>', unsafe_allow_html=True)
 st.markdown('<div class="menu-note">▦ 메뉴(테마/날짜)는 옵션으로 추후 확장 가능</div>', unsafe_allow_html=True)
 
 # Display 영역
