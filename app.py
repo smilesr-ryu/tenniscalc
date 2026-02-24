@@ -65,10 +65,17 @@ st.markdown(
     button {
         color: #ffffff !important;
     }
-    .stButton > button span, .stButton > button div {
+    button * {
         color: #ffffff !important;
     }
-    .stButton > button p {
+    .stButton > button span, 
+    .stButton > button div,
+    .stButton > button p,
+    .stButton > button label {
+        color: #ffffff !important;
+    }
+    /* Streamlit button text color */
+    .stButton [data-testid="baseButton-secondary"] {
         color: #ffffff !important;
     }
     </style>
@@ -96,7 +103,7 @@ def format_result(value: float) -> str:
 
 def safe_eval(expr: str) -> str:
     try:
-        normalized = expr.replace("x", "*").replace("÷", "/")
+        normalized = expr.replace("x", "*").replace("÷", "/").replace("−", "-").replace("＋", "+")
         result = eval(normalized, {"__builtins__": {}}, {})
         return format_result(float(result))
     except Exception:
@@ -106,11 +113,11 @@ def safe_eval(expr: str) -> str:
 def append_value(token: str) -> None:
     display = st.session_state.display
 
-    if st.session_state.reset_next and token not in {"+", "-", "x", "÷"}:
+    if st.session_state.reset_next and token not in {"＋", "−", "x", "÷"}:
         display = "0"
         st.session_state.reset_next = False
 
-    if token in {"+", "-", "x", "÷"}:
+    if token in {"＋", "−", "x", "÷"}:
         if display[-1:] in "+-x÷":
             st.session_state.display = display[:-1] + token
         else:
@@ -119,7 +126,7 @@ def append_value(token: str) -> None:
         return
 
     if token == ".":
-        parts = display.replace("+", " ").replace("-", " ").replace("x", " ").replace("÷", " ").split()
+        parts = display.replace("＋", " ").replace("−", " ").replace("x", " ").replace("÷", " ").split()
         current = parts[-1] if parts else display
         if "." not in current:
             st.session_state.display = display + token
@@ -222,8 +229,8 @@ rows = [
     ["AC", "±", "%", "DEL"],
     ["7", "8", "9", "÷"],
     ["4", "5", "6", "x"],
-    ["1", "2", "3", "-"],
-    ["0", "00", ".", "+"],
+    ["1", "2", "3", "−"],  # Unicode minus (U+2212)
+    ["0", "00", ".", "＋"],  # Full-width plus
 ]
 
 for row in rows:
